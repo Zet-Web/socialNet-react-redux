@@ -13,6 +13,7 @@ let rerenderEntireTree = (state) => {
       <App
         state={state}
         dispatch={store.dispatch.bind(store)}
+        store={store}
         /* updateNewPostText={store.updateNewPostText.bind(store)}
           addMessage={store.addMessage.bind(store)}
           updateNewPostMessage={store.updateNewPostMessage.bind(store)}*/
