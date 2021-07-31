@@ -1,0 +1,20 @@
+.nav {
+    grid-area: nav;
+    background: gold;
+    padding: 20px;
+}
+
+.item a {
+    color:white;
+    text-decoration: none;
+    transition: all .3s ease;
+}
+.item a:hover {
+    color:hotpink;
+}
+.item .activeLink {
+    color:blue;
+}
+.friend {
+    font-size: 12px;
+}

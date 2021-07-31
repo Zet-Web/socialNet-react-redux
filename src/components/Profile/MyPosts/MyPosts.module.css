@@ -1,0 +1,14 @@
+.postsBlock {
+    padding: 10px;
+}
+.postsBlock  textarea {
+    display: block;
+    resize: none;
+}
+.postsBlock  button {
+    display: block;
+    margin-top: 10px;
+}
+.posts {
+    margin-top: 10px;
+}

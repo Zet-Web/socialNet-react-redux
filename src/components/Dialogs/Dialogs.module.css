@@ -1,0 +1,31 @@
+.dialogs {
+    /*background: #000;*/
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+}
+.dialogsItems {
+    padding: 10px;
+}
+.dialogsItems .dialog {
+
+}
+.activeee {
+    color:black
+}
+.dialogsItems .dialog a {
+    color:#FFF;
+    text-decoration: none;
+    font-size: 14px;
+}
+.dialogsItems .dialog .active{
+    color:hotpink;
+}
+.dialogsItems .dialog .activeLink {
+    color:hotpink;
+}
+/*.dialogsItems .dialog.active{ color:gold;}*/
+.messages {   padding: 10px; }
+.messages .message {
+    color:#CCC;
+    font-size: 14px;margin-bottom: 20px
+}
