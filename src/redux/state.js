@@ -52,78 +52,62 @@ let store = {
       newMessage: 'test',
     },
   },
-  rerenderEntireTree() {
+  getState() {
+    return this._state;
+  },
+  subscribe(observer) {
+    this._callSubscriber = observer; // Паттерн наблюдатель
+  },
+  _callSubscriber() {
     console.log('state');
   },
-  addPost() {
-    // debugger;
-    let newPost = {
-      id: 5,
-      message: state.profilePage.newPostText,
-      likesCount: 0,
-    };
-    state.profilePage.posts.push(newPost);
-    state.profilePage.newPostText = '';
-    rerenderEntireTree(state);
-  },
+  /*
+  addPost() {},
   addMessage() {
     // debugger;
     let newMessage = {
       id: 5,
-      message: state.dialogsPage.newMessage,
+      message: this._state.dialogsPage.newMessage,
     };
-    state.dialogsPage.messages.push(newMessage);
-    state.dialogsPage.newMessage = '';
-    rerenderEntireTree(state);
+    this._state.dialogsPage.messages.push(newMessage);
+    this._state.dialogsPage.newMessage = '';
+    this._callSubscriber(this._state);
   },
-  updateNewPostText(newText) {
-    state.profilePage.newPostText = newText;
-    rerenderEntireTree(state);
-  },
+  updateNewPostText(newText) {},
   updateNewPostMessage(newText) {
-    state.dialogsPage.newMessage = newText;
-    rerenderEntireTree(state);
+    this._state.dialogsPage.newMessage = newText;
+    this._callSubscriber(this._state);
+  },*/
+  dispatch(action) {
+    // debugger;
+    // {type: 'ADD-POST'}
+    if (action.type === 'ADD-POST') {
+      let newPost = {
+        id: 5,
+        message: this._state.profilePage.newPostText,
+        likesCount: 0,
+      };
+      this._state.profilePage.posts.push(newPost);
+      this._state.profilePage.newPostText = '';
+      this._callSubscriber(this._state);
+    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+      this._state.profilePage.newPostText = action.text;
+      this._callSubscriber(this._state);
+    } else if (action.type === 'ADD-MESSAGE') {
+      let newMessage = {
+        id: 5,
+        message: this._state.dialogsPage.newMessage,
+      };
+      this._state.dialogsPage.messages.push(newMessage);
+      this._state.dialogsPage.newMessage = '';
+      this._callSubscriber(this._state);
+    } else if (action.type === 'UPDATE-NEW-POST-MESSAGE') {
+      this._state.dialogsPage.newMessage = action.text;
+      this._callSubscriber(this._state);
+    }
   },
-  subscribe(observer) {
-    rerenderEntireTree = observer; // Паттерн наблюдатель
-  },
 };
 
-export const addPost = () => {
-  // debugger;
-  let newPost = {
-    id: 5,
-    message: state.profilePage.newPostText,
-    likesCount: 0,
-  };
-  state.profilePage.posts.push(newPost);
-  state.profilePage.newPostText = '';
-  rerenderEntireTree(state);
-};
-
-export const addMessage = () => {
-  // debugger;
-  let newMessage = {
-    id: 5,
-    message: state.dialogsPage.newMessage,
-  };
-  state.dialogsPage.messages.push(newMessage);
-  state.dialogsPage.newMessage = '';
-  rerenderEntireTree(state);
-};
-
-export const updateNewPostText = (newText) => {
-  state.profilePage.newPostText = newText;
-  rerenderEntireTree(state);
-};
-export const updateNewPostMessage = (newText) => {
-  state.dialogsPage.newMessage = newText;
-  rerenderEntireTree(state);
-};
-
-export const subscribe = (observer) => {
-  rerenderEntireTree = observer; // Паттерн наблюдатель
-};
-export default state;
-window.state = state;
+export default store;
+window.store = store;
 // STORE - OOP

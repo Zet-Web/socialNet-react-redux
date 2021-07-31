@@ -11,23 +11,25 @@ const MyPosts = (props) => {
   let newPostElement = React.createRef();
 
   let addPost = () => {
-    props.addPost();
+    // props.addPost();
+    props.dispatch({ type: 'ADD-POST' });
     // props.updateNewPostText('');
     // // props.rerenderEntireTree();
   };
-  let onChangeTextarea = () => {
+  let onPostChange = () => {
     // console.log(e.target.value);
     // debugger;
     let text = newPostElement.current.value;
     // props.addPost(text);
-    props.updateNewPostText(text);
+    // props.updateNewPostText(text);
+    props.dispatch({ type: 'UPDATE-NEW-POST-TEXT', text: text });
   };
   return (
     <div className={s.postsBlock}>
       <h3>My post</h3>
       <div>
         <textarea
-          onChange={onChangeTextarea}
+          onChange={onPostChange}
           name=''
           id='text'
           cols='30'

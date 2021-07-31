@@ -23,11 +23,11 @@ const Dialogs = (props) => {
   let newPostMessage = React.createRef();
 
   let addMessage = () => {
-    props.addMessage();
+    props.dispatch({ type: 'ADD-MESSAGE' });
   };
   let onChangeTextarea = () => {
     let text = newPostMessage.current.value;
-    props.updateNewPostMessage(text);
+    props.dispatch({ type: 'UPDATE-NEW-POST-MESSAGE', text: text });
   };
 
   return (
