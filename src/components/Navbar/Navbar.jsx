@@ -5,11 +5,13 @@ import { BrowserRouter, NavLink } from 'react-router-dom';
 import DialogItem from '../Dialogs/DialogItem/DialogItem';
 
 const Navbar = (props) => {
+  /*
   const {
     state: { dialogs },
   } = props;
+*/
 
-  const dialogElements = dialogs.slice(0, 3).map((key) => {
+  /*  const dialogElements = dialogs.slice(0, 3).map((key) => {
     return (
       <span key={key.id}>
         <img src={key.avatar} id={key.id} width='20' alt='key.name' />
@@ -18,7 +20,7 @@ const Navbar = (props) => {
         </span>
       </span>
     );
-  });
+  });*/
   return (
     <nav className={s.nav}>
       <div className={`${s.item} ${s.active}`}>
@@ -43,7 +45,7 @@ const Navbar = (props) => {
       <div className='friends'>
         <h2>Friends</h2>
 
-        {dialogElements}
+        {/*{dialogElements}*/}
       </div>
     </nav>
   );
