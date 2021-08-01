@@ -52,9 +52,6 @@ const dialogsReducer = (state = initialState, action) => {
         messages: [...state.messages, { message: body, id: 6 }],
         newMessage: '',
       };
-      // stateCopy.newMessage = '';
-      // stateCopy.messages.push({ message: body, id: 6 });
-      // return stateCopy;
     }
 
     case UPDATE_NEW_MESSAGE: {
@@ -62,9 +59,6 @@ const dialogsReducer = (state = initialState, action) => {
         ...state,
         newMessage: action.text,
       };
-      // stateCopy = { ...state, newMessage: action.text };
-      // stateCopy.newMessage = action.text;
-      // return stateCopy;
     }
 
     default:
