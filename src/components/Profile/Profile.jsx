@@ -12,8 +12,8 @@ const Profile = (props) => {
     <div>
       <ProfileInfo />
       <MyPostsContainer
-        store={props.store}
-        /*addPost={props.addPost}
+      //store={props.store}
+      /*addPost={props.addPost}
         newPostText={newPostText}
         updateNewPostText={props.updateNewPostText}*/
       />

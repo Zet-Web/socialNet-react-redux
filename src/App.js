@@ -23,9 +23,9 @@ const App = (props) => {
             path='/dialogs'
             render={() => (
               <DialogsContainer
-                /*state={props.state.dialogsPage}
+              /*state={props.state.dialogsPage}
                 dispatch={props.dispatch}*/
-                store={props.store}
+              //store={props.store}
               />
             )}
           />
@@ -33,8 +33,8 @@ const App = (props) => {
             path='/profile'
             render={() => (
               <Profile
-                store={props.store}
-                /* profilePage={props.state.profilePage}
+              //store={props.store}
+              /* profilePage={props.state.profilePage}
                 dispatch={props.dispatch}*/
               />
             )}
