@@ -8,26 +8,26 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-let rerenderEntireTree = (state) => {
-  // debugger;
-  ReactDOM.render(
-    <BrowserRouter>
-      {/*<React.StrictMode>*/}
-      <Provider store={store}>
-        <App
-        /*state={store.getState()}
+// let rerenderEntireTree = (state) => {
+// debugger;
+ReactDOM.render(
+  <BrowserRouter>
+    {/*<React.StrictMode>*/}
+    <Provider store={store}>
+      <App
+      /*state={store.getState()}
           dispatch={store.dispatch.bind(store)}
           store={store}*/
-        /* updateNewPostText={store.updateNewPostText.bind(store)}
+      /* updateNewPostText={store.updateNewPostText.bind(store)}
           addMessage={store.addMessage.bind(store)}
           updateNewPostMessage={store.updateNewPostMessage.bind(store)}*/
-        />
-      </Provider>
-      {/*</React.StrictMode>*/}
-    </BrowserRouter>,
-    document.getElementById('root')
-  );
-};
+      />
+    </Provider>
+    {/*</React.StrictMode>*/}
+  </BrowserRouter>,
+  document.getElementById('root')
+);
+// };
 
 // rerenderEntireTree(/*store.getState()*/);
 /*store.subscribe(() => {
