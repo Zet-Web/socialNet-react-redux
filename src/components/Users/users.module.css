@@ -1,0 +1,15 @@
+.userPhoto{
+    width:100px
+}
+
+.sitem {
+    color:#000;
+    cursor: pointer;
+    padding: 0 5px;
+}
+.selectedPage {
+    font-weight: bold;
+    color:#FFF;
+    cursor: pointer;
+
+}
