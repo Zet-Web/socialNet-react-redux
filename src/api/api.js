@@ -1,71 +1,50 @@
 import * as axios from 'axios';
 const baseUrl = 'https://social-network.samuraijs.com/api/1.0/';
-const isntance = axios.create({
+const instance = axios.create({
   withCredentials: true,
   baseURL: 'https://social-network.samuraijs.com/api/1.0/',
   headers: {
     'API-KEY': 'e9184a03-f357-47a6-bd16-138e33d95334',
+    // 'API-KEY': '39c42902-0f67-4bf6-97f0-3a5aa80ffae5',
   },
 });
 
 export const usersAPI = {
   getUsers(currentPage = 1, pageSize = 10) {
-    return isntance
+    return instance
       .get(`users?page=${currentPage}&count=${pageSize}`)
       .then((response) => response.data);
   },
 
   followQuery(userId) {
-    return axios
-      .post(
-        `${baseUrl}follow/${userId}`,
-        {},
-        {
-          withCredentials: true,
-          headers: {
-            'API-KEY': 'e9184a03-f357-47a6-bd16-138e33d95334',
-          },
-        }
-      )
+    return instance
+      .post(`${baseUrl}follow/${userId}`)
       .then((response) => response.data);
   },
   unfollowQuery(userId) {
-    return isntance
+    return instance
       .delete(`follow/${userId}`)
       .then((response) => response.data);
   },
+  getProfile(userId) {
+    console.warn('Obsolete method. Please use profileAPI');
+    return profileAPI.getProfile(userId);
+  },
 };
-export const getUsers = (currentPage = 1, pageSize = 10) => {
-  return isntance
-    .get(`users?page=${currentPage}&count=${pageSize}`)
-    .then((response) => response.data);
-};
-
-export const followQuery = (userId) => {
-  return axios
-    .post(
-      `${baseUrl}/follow/${userId}`,
-      {},
-      {
-        withCredentials: true,
-        headers: {
-          'API-KEY': 'e9184a03-f357-47a6-bd16-138e33d95334',
-        },
-      }
-    )
-    .then((response) => response.data);
+export const profileAPI = {
+  getProfile(userId) {
+    return instance.get(`profile/${userId}`);
+  },
+  getStatus(userId) {
+    return instance.get(`profile/status/${userId}`);
+  },
+  updateStatus(status) {
+    return instance.put(`profile/status`, { status: status });
+  },
 };
 
-export const unfollowQuery = (userId) => {
-  return isntance.delete(`/follow/${userId}`).then((response) => response.data);
+export const authAPI = {
+  me() {
+    return instance.get(`auth/me`);
+  },
 };
-/*
-
-getUsers(pageNumber = this.props.currentPage) {
-  this.props.toggleIsFetching(true);
-  getUsers().then((response) => {
-    this.props.setUsers(response.data.items);
-    this.props.setTotalUsersCount(response.data.totalCount / 250);
-    this.props.toggleIsFetching(false);
-  });
-}*/

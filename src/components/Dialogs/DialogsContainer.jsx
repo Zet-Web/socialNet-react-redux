@@ -5,41 +5,16 @@ import {
 } from '../../redux/dialogs-reducer';
 import Dialogs from './Dialogs';
 import { connect } from 'react-redux';
-/*
-const DialogsContainer = () => {
-  /!* const {
-    state: { dialogs, messages, newMessage },
-  } = props;*!/
-  // const { dialogs, messages } = props.state;
-
-  return (
-    <StoreContext.Consumer>
-      {(store) => {
-        let state = store.getState().dialogsPage;
-
-        let onSendMessageClick = () => {
-          store.dispatch(sendMessageActionCreator());
-        };
-        let onNewMessageChange = (body) => {
-          store.dispatch(updateNewMessageActionCreator(body));
-        };
-        return (
-          <Dialogs
-            updateNewMessageBody={onNewMessageChange}
-            sendMessage={onSendMessageClick}
-            dialogsPage={state}
-          />
-        );
-      }}
-    </StoreContext.Consumer>
-  );
-};*/
+import { Redirect } from 'react-router-dom';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 let mapStateToProps = (state) => {
   return {
     dialogsPage: state.dialogsPage,
   };
 };
+
 let mapDispatchToProps = (dispatch) => {
   return {
     updateNewMessageBody: (body) => {
@@ -50,5 +25,8 @@ let mapDispatchToProps = (dispatch) => {
     },
   };
 };
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
-export default DialogsContainer;
+
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  withAuthRedirect
+)(Dialogs);
